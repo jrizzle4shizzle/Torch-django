@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    {% if object_list %}
+    <h3>Active Members:</h3>
+        <ul>
+        {% for member in object_list %}
+            <li><a href="{{ member.user.id }}/">{{ member.user.first_name }} {{member.user.last_name}}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No members.</p>
+    {% endif %}
+{%endif%}
+{%endblock%}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+Main Menu
+{%endblock%}
+
+{% block head %}
+Main Menu
+{%endblock%}
+
+{% block content %}
+
+<div class="members">
+<h3>Member Information</h3>
+<ul>
+    <li><a href="members/{{user.id}}">My Profile</a></li>
+    <li><a href="members">View All Active Members</a></li>
+</ul>
+</div>
+
+<div class="events">
+<h3>Events</h3>
+<ul>
+    <li><a href="events">View all events</a></li>
+</ul>
+</div>
+
+<div class="announcements">
+<h3>Announcements</h3>
+<ul>
+	<li><a href="announcements">View announcements</a></li>
+</ul>
+</div>
+		
+
+{%endblock%}

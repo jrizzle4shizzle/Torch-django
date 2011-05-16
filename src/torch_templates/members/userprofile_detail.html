@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{object.user.first_name}} {{object.user.last_name}}'s Profile
+{%endblock%}
+
+{%block head %}
+    {{object.user.first_name}} {{object.user.last_name}}'s Profile
+{%endblock%}
+
+{% block content %}
+{% if user.is_authenticated %}    
+    <div id='active'>
+        {% if object.user.is_active %}
+            Active Member
+        {%else%}
+            Not Active
+        {%endif%}
+    </div>
+    
+    <div id='member_since'>
+        Member Since: {{object.membership_date}}
+    </div>
+    
+    <div id='membership_type'>
+        Membership type: {{object.membership_type}}
+    </div>
+    
+    <div id='home_address'>
+    Address: <br/>
+    {{object.home_address_street}} <br/>
+    {{object.home_address_city}} {{object.home_address_state}} {{object.home_address_zip}}
+    </div>
+    
+    <div id='home_phone_number'>
+        Home Phone Number: {{object.home_phone_number}}
+    </div>
+    
+    <div id='mobile_phone_numner'>
+        Mobile Phone Number: {{object.mobile_phone_number}}
+    </div>
+    
+    <div id='rank'>
+        Rank: {{object.rank}}
+    </div>
+    
+    <div id='badge_number'>
+        Badge Number: {{object.badge_number}}
+    </div>
+    
+    <div id='birthday'>
+        Birthday: {{object.birth_day}}
+    </div>
+    
+    <div id='committees'>
+        Committees: {{object.comittee}}
+    </div>
+    
+    {%if user == object.user or perms.members.can_view_private%}
+        <div id='personal information'>
+        <h3>Personal Information:</h3>
+     
+            <div id='aaco_riding_db'>
+                {%if object.aaco_riding_db%}
+                    In AA County riding database
+                {%else%}
+                    Not in AA County riding database
+                {%endif%}
+            </div>
+            
+            <div id='active_years_dues'>
+                {%if object.active_years_dues%}
+                    Current year's dues paid
+                {%else%}
+                    Current year's dues unpaid!
+                {%endif%}
+            </div>
+            
+            <div id='life_insurance'>
+                {%if object.life_insurance%}
+                    Signed up for life insurance
+                {%else%}
+                    Not signed up for life insurance!
+                {%endif%}
+            </div>
+            <div id='drivers_license:'>
+            <h4>Driver's License:</h4>
+            <ul>
+            <li>Number: {{object.drivers_license_number}}</li>
+            <li>State: {{object.drivers_license_state}}</li>
+            <li>Class: {{object.drivers_license_class}}</li>
+            <li>Expiration: {{object.drivers_license_expiration}}</li>
+            </ul>
+            </div>
+        
+        </div>
+    
+    <a href="edit">Edit information</a>
+    
+    {%endif%}
+    
+    
+{%endif%}
+{%endblock%}
